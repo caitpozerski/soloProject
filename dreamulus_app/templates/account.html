@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <title>Account Info</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="header">
+            <h1>Dreamulus</h1>
+
+            <!-- insert music feature here -->
+            <div class="nav_link">
+                <h4><a href="/dreams">Home</a></h4>
+                <h4><a href="/users/journal">My Journal</a></h4>
+                <h4><a href="/users/account/{{ current_user.id }}">Account</a></h4>
+                <h4><a href="/logout">Logout</a></h4>
+            </div>
+        </div>
+        <div id="account_body">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <h1>Account Info</h1>
+            <form action="/users/update/{{ one_user.id }}" method="POST">
+                {% csrf_token %}
+                <label>
+                    <p>First Name: <input type="text" name="first_name" value="{{ one_user.first_name }}"></p>
+                </label>
+                <label>
+                    <p>Last Name:<input type="text" name="last_name" value="{{ one_user.last_name }}"></p>
+                </label>
+                <label>
+                    <p>Email:<input type="text" name="email" value="{{ one_user.email }}"></p>
+                </label>
+                <label>
+                    <p>Password:<input type="password" name="password"></p>
+                </label>
+                <label>
+                    <p>PW Confirm:<input type="password" name="password_conf"></p>
+                </label>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <title>My Journal</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="header">
+            <h1>Dreamulus</h1>
+            <!-- insert music feature here -->
+            <div class="nav_link">
+                <h4><a href="/dreams">Home</a></h4>
+                <h4><a href="/users/journal">My Journal</a></h4>
+                <h4><a href="/users/account/{{ current_user.id }}">Account</a></h4>
+                <h4><a href="/logout">Logout</a></h4>
+            </div>
+        </div>
+        <div class="my_dream_list">
+            <h1> {{ current_user.first_name }}'s Dream Journal</h1>
+            {% for one_dream in current_user.dreams_owned.all %}
+            <h4>{{ one_dream.title }}</h4>
+            <p>{{ one_dream.description }}</p>
+            <p>Likes: {{ dream.users_that_liked.count }}</p>
+            {% if user.id == dream.owner.id %}
+            <form action="/dreams/delete/{{dream.id}}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Delete">
+            </form>
+            <a href="/users/dreams/edit/{{ one_dream.id }}"><button>Edit</button></a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+
+</html>

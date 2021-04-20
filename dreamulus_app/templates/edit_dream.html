@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <title>Edit Dream</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="header">
+            <h1>Dreamulus</h1>
+
+            <!-- insert music feature here -->
+            <div class="nav_link">
+                <h4><a href="/dreams">Home</a></h4>
+                <h4><a href="/users/journal">My Journal</a></h4>
+                <h4><a href="/users/account/{{ current_user.id }}">Account</a></h4>
+                <h4><a href="/logout">Logout</a></h4>
+            </div>
+        </div>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+        <h2>Edit: {{ one_dream.title }}</h2>
+        <form action="/users/dreams/update/{{ one_dream.id }}" method="POST">
+            {% csrf_token %}
+            <label>
+                <p><input type="text" name="title" value="{{ one_dream.title }}"></p>
+            </label>
+            <label><textarea name="description" cols="30" rows="10">{{ one_dream.description }}</textarea></label>
+            <p><input type="submit" value="Update"></p>
+        </form>
+
+    </div>
+</body>
+
+</html>

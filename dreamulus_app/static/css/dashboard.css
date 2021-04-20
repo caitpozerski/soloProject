@@ -1,0 +1,95 @@
+* {
+    margin:0px;
+    padding:0px;
+    font-family: sans-serif;
+}
+
+#wrapper{
+    width: 100%;
+    height:1000px;
+    margin:0px auto;
+    /* border: dotted red; */
+    /*     background-image: url("cherries.png");
+    background-position: center;
+    background-size: auto;
+    background-repeat: no-repeat; */
+}
+
+body {
+    background-image: linear-gradient(to left, rgba(238, 139, 58, 0.733), rgb(152, 183, 240));
+    font-family: sans-serif;
+    color: white;
+}
+
+.header{
+    padding:15px;
+    width: inherit;
+    background-color: rgba(7, 189, 202, 0.219);
+}
+
+    .header h1 {
+        display:inline-block;
+        color: white;
+        font-weight: normal;
+        margin-left: 2%;
+    }
+
+.nav_link{
+    display: inline-block;
+    vertical-align: inherit;
+    margin-left: 50%;
+}
+
+    .nav_link h4{
+        display: inline-block;
+        width: auto; 
+        color:white;
+        margin-left: 60px;
+        text-align: right;
+        font-family: Tahoma;
+        font-weight: lighter;
+        font-size: small;
+    }
+
+.main_content{
+    position: fixed;
+    padding: 20px;
+    height: 25%;
+    width: 45%;
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+}
+
+    .main_content h2{
+        margin-bottom: 5%;
+        margin-top: 10%;
+    }
+
+    .main_content input{
+        margin-bottom: 5%;
+    }
+
+
+.feed{
+    padding: 20px;
+    height: 91%;
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+    border-left: 2px solid rgba(198, 104, 253, 0.699);
+} 
+
+    .feed h2{
+        margin-bottom: 5%;
+        text-align: center;
+    }
+
+    #username{
+        font-size: large;
+        background-color: rgba(112, 197, 218, 0.301);
+        width: fit-content;
+        padding: 1%;
+    }
+

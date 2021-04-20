@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/main_page.css' %}">
+    <title>Login & Registration</title>
+</head>
+
+
+<body>
+    <!-- <img src="{% static 'img/lake.jpg' %}" alt=""> -->
+    <div id="wrapper">
+        <div class="title">
+            <h1>Dreamulus</h1>
+            <!-- <h4>Please make an account and login to access platform</h4> -->
+        </div>
+        <div class= "register">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <h2>Registration</h2>
+            <form action="/users/create" method="POST">
+                {% csrf_token %}
+                <p><label>First Name: <input type="text" name="first_name"></label></p>
+                <p><label>Last Name: <input type="text" name="last_name"></label></p>
+                <p><label>Email: <input type="text" name="email"></label></p>
+                <p><label>Password: <input type="password" name="password"></label></p>
+                <p><label>PW Confirm: <input type="password" name="password_conf"></label></p>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+
+        <div class="login">
+            <h2>Login</h2>
+            <form action="/users/login" method="POST">
+                {% csrf_token %}
+                <p><label>Email: <input type="text" name="email"></label></p>
+                <p><label>Password: <input type="password" name="password"></label></p>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+</body>
+</html>
