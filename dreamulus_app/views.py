@@ -191,42 +191,6 @@ def update_account(request, user_id):
     return redirect('/dreams')
 
 
-
-
-    #         password = request.POST['password']
-    #         pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
-    #         user = User.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=pw_hash)
-    #         # add in profile picture???
-    #         request.session['user_id'] = user.id # matches variable on line 25
-    #         return redirect('/') # or return redirect('/dreams')
-    # return redirect('/')
-    
-    
-    # olddddddd
-    # if request.method =="POST":
-    #     errors = User.objects.create_validator(request.POST)
-    #     if len(errors) > 0:
-    #         for key, value in errors.items():
-    #             messages.error(request, value)
-    #         # return redirect('/users/account/<int:user_id>')
-    #         return redirect('/users/account/{f'{'user_id'}')
-    #     else: 
-    #         user_to_update = User.objects.get(id=user_id)
-    #         user_to_update.first_name = request.POST['first_name']
-    #         user_to_update.last_name = request.POST['last_name']
-    #         user_to_update.email = request.POST['email']
-    #         user_to_update.password = request.POST['password']
-    #         user_to_update.save()
-    #         messages.success(request, "Account has been updated")
-    #     # return redirect('/users/account/<int:user_id>')
-    #     return redirect('/users/account/{f'{'user_id'}')
-    # return redirect('/dreams')
-
-
-
-
-
-
 #-----LOGOUT------
 def logout(request):
     request.session.flush()
